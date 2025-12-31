@@ -148,5 +148,5 @@
   .section { padding: 4rem 1rem; max-width: 900px; margin: 0 auto; }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; padding: 0; list-style: none; }
   .card { border: 1px solid #eee; padding: 1rem; border-radius: 12px; }
-  .footer { padding: 2rem 1rem; text-align: center; color: #777; }
+  .footer { padding: 2rem 1rem; text-align: center; color: #777; }*/
 </style>
