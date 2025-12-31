@@ -18,11 +18,11 @@
   ];
 
   const profile_photo = [
-    { alt: 'Guitar Teacher Profile Shot', src: 'src/assets/guy_playing.jpg'}
+    { alt: 'Guitar Teacher Profile Shot', src: './assets/guy_playing.jpg'}
   ]
 
   const photos = [
-    { alt: 'Teaching a student', src: 'src/assets/img1.png' }
+    { alt: 'Teaching a student', src: './assets/img1.png' }
   ];
 </script>
 
