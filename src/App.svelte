@@ -8,7 +8,7 @@
 </script>
 
 <nav class="nav">
-  <a class="brand" href="#">arjun rewari</a>
+  <a class="brand" href="#">Arjun Rewari</a>
   <div class="spacer" />
   {#each links as l}
     <a class="link" href={l.href}>{l.label}</a>
@@ -55,11 +55,11 @@
   .nav {
     position: sticky; top: 0; backdrop-filter: blur(6px);
     display: flex; align-items: center; gap: 1rem;
-    padding: 0.75rem 1rem; border-bottom: 1px solid #eee;
+    padding: 0.75rem 1rem; border-bottom: 1px solid #161616;
   }
   .brand { font-weight: 700; text-decoration: none; color: inherit; }
   .spacer { flex: 1; }
-  .link { text-decoration: none; color: #444; margin-left: 1rem; }
+  .link { text-decoration: none; color: #121111; margin-left: 1rem; }
   .hero {
     min-height: 65vh; display: grid; place-content: center;
     text-align: center; padding: 4rem 1rem;
