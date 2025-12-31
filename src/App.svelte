@@ -1,5 +1,8 @@
 
 <script lang="ts">
+  import guyPlaying from './assets/guy_playing.jpg';
+  import img1 from './assets/img1.png';
+
   const links = [
     { href: '#about', label: 'About' },
     { href: '#gallery',  label: 'Gallery'  },
@@ -18,11 +21,11 @@
   ];
 
   const profile_photo = [
-    { alt: 'Guitar Teacher Profile Shot', src: './assets/guy_playing.jpg'}
+    { alt: 'Guitar Teacher Profile Shot', src: guyPlaying}
   ]
 
   const photos = [
-    { alt: 'Teaching a student', src: './assets/img1.png' }
+    { alt: 'Teaching a student', src: img1}
   ];
 </script>
 
