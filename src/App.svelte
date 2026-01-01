@@ -115,7 +115,7 @@
 <section id="about" class="section">
   <h2>About</h2>
   <p>
-    John has been teaching guitar for over 10 years, specializing in rock, blues, and folk.
+    Riley has been teaching guitar for over 10 years, specializing in rock, blues, and folk.
     Lessons are tailored to each student’s goals, whether that’s learning your first chords
     or improvising over your favorite songs.
   </p>
