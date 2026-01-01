@@ -29,16 +29,16 @@
   ];
 </script>
 
-<nav class="nav">
+<!-- <nav class="nav">
   <a class="brand" href="#">Arjun Rewari</a>
   <div class="spacer" />
   {#each links as l}
     <a class="link" href={l.href}>{l.label}</a>
   {/each}
-</nav>
+</nav> -->
 
 <section id="title-header" class="title-header">
-  <h1>John Doe – Guitar Teacher</h1>
+  <h1>Riley Merlino</h1>
 </section>
 
 <section id="profile-photo" class="profile-photo">
@@ -96,6 +96,13 @@
   </div>
 </section>
 
+<section id="testimonials" class="section">
+  <h2>Testimonials</h2>
+  <p>
+    1st Testimonial
+  </p>
+</section>
+
 <!-- <section id="work" class="section">
   <h2>Selected Work</h2>
   <ul class="cards">
@@ -130,7 +137,8 @@
 
 <section id="contact" class="section">
   <h2>Contact</h2>
-  <p>Email: <a href="mailto:guitar.teacher@example.com">guitar.teacher@example.com</a></p>
+  <p>Email: <a href="mailto:rileymerlino@gmail.com">rileymerlino@gmail.com</a></p>
+  <p>Phone: XXX-XXX-XXX </p>
   <p>Instagram: <a href="https://instagram.com/username" target="_blank" rel="noreferrer">@username</a></p>
 </section>
 

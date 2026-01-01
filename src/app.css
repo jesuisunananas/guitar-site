@@ -22,6 +22,14 @@ a:hover {
   color: #535bf2;
 }
 
+.profile-photo img {
+  width: 80%; /* Scales to container width */
+  max-width: 100%; /* Prevents overflow */
+  height: auto; /* Maintains aspect ratio */
+  display: block; /* Removes extra space below image */
+  margin: 0 auto; /* Centers the image */
+}
+
 body {
   margin: 0;
   display: flex;
