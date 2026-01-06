@@ -107,11 +107,6 @@
   <p>In-person and online • Acoustic & electric • All ages welcome.</p>
 </section>
 
-<!-- <section id="hero" class="hero">
-  <h1>Hi, I’m Arjun.</h1>
-  <p>I build things for the web.</p>
-</section> -->
-
 <section id="about" class="section">
   <h2>About</h2>
   <p>
@@ -121,7 +116,7 @@
   </p>
 </section>
 
-<section id="lessons" class="section">
+<!-- <section id="lessons" class="section">
   <h2>Lessons</h2>
   <ul>
     <li>1-on-1 private lessons (30 or 60 minutes)</li>
@@ -129,6 +124,28 @@
     <li>Customized practice plans & song-based learning</li>
     <li>Technique, ear training, music theory, improvisation</li>
   </ul>
+</section> -->
+
+<section id="lessons" class="section">
+  <h2>Lessons</h2>
+  <div class="lessons-cards">
+    <div class="lesson-card">
+      <h3>1-on-1 Private Lessons</h3>
+      <p>30 or 60 minute sessions tailored to your pace and goals</p>
+    </div>
+    <div class="lesson-card">
+      <h3>In-Person or Online</h3>
+      <p>Studio sessions or convenient Zoom lessons from anywhere</p>
+    </div>
+    <div class="lesson-card">
+      <h3>Customized Learning</h3>
+      <p>Practice plans and song-based learning designed for you</p>
+    </div>
+    <div class="lesson-card">
+      <h3>Comprehensive Curriculum</h3>
+      <p>Technique, ear training, music theory, and improvisation</p>
+    </div>
+  </div>
 </section>
 
 <section id="videos" class="section">
@@ -227,6 +244,15 @@
   :global(html) { scroll-behavior: smooth; }
   :global(body) { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
   
+  /* Hide the outline on a mouse click */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+  /* Provide clear focus styles for keyboard users */
+  *:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
   .title-header {
     text-align: center;
     padding: 2rem 1rem;
@@ -239,13 +265,77 @@
 
   .hero {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 0rem 1rem;
+  }
+
+  .hero p {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin: 0.5rem 0;
   }
 
   .section {
-    padding: 4rem 1rem;
+    padding: 2rem 1rem;
     max-width: 900px;
     margin: 0 auto;
+  }
+
+  .section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+  }
+
+  /* About Section Specific Styles */
+  #about {
+    padding-bottom: 2rem;
+  }
+
+  #about p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+  }
+
+  /* Lessons Section Specific Styles */
+  #lessons {
+    padding-top: 2rem;
+  }
+
+  /* Lesson Cards */
+  .lessons-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .lesson-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+  }
+
+  .lesson-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .lesson-card h3 {
+    margin: 0 0 0.75rem 0;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .lesson-card p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.6;
+    font-size: 1.1rem;
   }
 
   .video-grid {
@@ -301,7 +391,6 @@
   .testimonials-section h2 {
     text-align: center;
     margin-bottom: 3rem;
-    font-size: 2rem;
     color: #1a1a1a;
   }
 
@@ -373,15 +462,20 @@
   @keyframes fade {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      /* transform: translateY(10px); */
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      /* transform: translateY(0); */
     }
   }
 
-  .card {
-    animation: fade 0.5s ease-in-out;
+  .author {
+    margin-top: 1.3rem;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    color: rgba(107, 114, 128, 1);
+    font-style: italic;
   }
+
 </style>
