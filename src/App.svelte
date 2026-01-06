@@ -84,14 +84,6 @@
 
 </script>
 
-<!-- <nav class="nav">
-  <a class="brand" href="#">Arjun Rewari</a>
-  <div class="spacer" />
-  {#each links as l}
-    <a class="link" href={l.href}>{l.label}</a>
-  {/each}
-</nav> -->
-
 <section id="title-header" class="title-header">
   <h1>Riley Merlino</h1>
 </section>
