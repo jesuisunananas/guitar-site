@@ -265,7 +265,7 @@
 
   .hero {
     text-align: center;
-    padding: 0rem 1rem;
+    padding: 1rem 1rem;
   }
 
   .hero p {
@@ -293,7 +293,7 @@
   }
 
   #about p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 1.8;
   }
 
@@ -392,6 +392,7 @@
     text-align: center;
     margin-bottom: 3rem;
     color: #1a1a1a;
+    font-size: 2rem;
   }
 
   .testimonial-container {
