@@ -38,6 +38,25 @@
     { alt: 'Teaching a student', src: img1}
   ];
 
+  const lessons = [
+    {
+      title: '1-on-1 Private Lessons',
+      description: '30 or 60 minute sessions tailored to your pace and goals'
+    },
+    {
+      title: 'In-Person or Online',
+      description: 'Studio sessions or convenient Zoom lessons from anywhere'
+    },
+    {
+      title: 'Customized Learning',
+      description: 'Practice plans and song-based learning designed for you'
+    },
+    {
+      title: 'Comprehensive Curriculum',
+      description: 'Technique, ear training, music theory, and improvisation'
+    }
+  ];
+
   const testimonials = [
     {
       text: "Riley is an excellent guitar teacher. He is very patient and works with whatever level you are at. I have been learning guitar from for over a year. I started as a complete novice and have learnt to read music and play several tunes on the acoustic guitar.",
@@ -55,6 +74,9 @@
   
   let currentTestimonial = 0;
   let autoPlayInterval: number;
+
+  let currentLesson = 0;
+  let lessonAutoPlayInterval: number;
 
   function setTestimonial(index: number) {
     currentTestimonial = index;
@@ -74,12 +96,36 @@
     startAutoPlay();
   }
 
+  function setLesson(index: number) {
+    currentLesson = index;
+    resetLessonAutoPlay();
+  }
+
+  function nextLesson() {
+    currentLesson = (currentLesson + 1) % lessons.length;
+  }
+
+  function prevLesson() {
+    currentLesson = (currentLesson - 1 + lessons.length) % lessons.length;
+  }
+
+  function startLessonAutoPlay() {
+    lessonAutoPlayInterval = setInterval(nextLesson, 4000);
+  }
+
+  function resetLessonAutoPlay() {
+    clearInterval(lessonAutoPlayInterval);
+    startLessonAutoPlay();
+  }
+
   onMount(() => {
     startAutoPlay();
+    startLessonAutoPlay();
   });
 
   onDestroy(() => {
     clearInterval(autoPlayInterval);
+    clearInterval(lessonAutoPlayInterval);
   });
 
 </script>
@@ -120,23 +166,38 @@
 
 <section id="lessons" class="section">
   <h2>Lessons</h2>
-  <div class="lessons-cards">
-    <div class="lesson-card">
-      <h3>1-on-1 Private Lessons</h3>
-      <p>30 or 60 minute sessions tailored to your pace and goals</p>
+  <div class="lessons-carousel">
+    <button class="carousel-btn prev" on:click={prevLesson} aria-label="Previous lesson">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    
+    <div class="carousel-content">
+      {#key currentLesson}
+        <div class="lesson-card" in:fade={{ duration: 300 }}>
+          <h3>{lessons[currentLesson].title}</h3>
+          <p>{lessons[currentLesson].description}</p>
+        </div>
+      {/key}
     </div>
-    <div class="lesson-card">
-      <h3>In-Person or Online</h3>
-      <p>Studio sessions or convenient Zoom lessons from anywhere</p>
-    </div>
-    <div class="lesson-card">
-      <h3>Customized Learning</h3>
-      <p>Practice plans and song-based learning designed for you</p>
-    </div>
-    <div class="lesson-card">
-      <h3>Comprehensive Curriculum</h3>
-      <p>Technique, ear training, music theory, and improvisation</p>
-    </div>
+    
+    <button class="carousel-btn next" on:click={nextLesson} aria-label="Next lesson">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="lesson-indicators">
+    {#each lessons as _, index}
+      <button
+        class="indicator-dot"
+        class:active={index === currentLesson}
+        on:click={() => setLesson(index)}
+        aria-label="View lesson {index + 1}"
+      ></button>
+    {/each}
   </div>
 </section>
 
@@ -292,14 +353,50 @@
   /* Lessons Section Specific Styles */
   #lessons {
     padding-top: 2rem;
+    padding-bottom: 3rem;
   }
 
-  /* Lesson Cards */
-  .lessons-cards {
+  /* Lessons Carousel */
+  .lessons-carousel {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem auto;
+    max-width: 600px;
+  }
+
+  .carousel-btn {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    color: #1a1a1a;
+  }
+
+  .carousel-btn:hover {
+    background-color: #f9fafb;
+    border-color: #2563eb;
+    color: #2563eb;
+    transform: scale(1.05);
+  }
+
+  .carousel-btn:active {
+    transform: scale(0.95);
+  }
+
+  .carousel-content {
+    flex: 1;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .lesson-card {
@@ -307,13 +404,9 @@
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e5e7eb;
-  }
-
-  .lesson-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 100%;
   }
 
   .lesson-card h3 {
@@ -328,6 +421,35 @@
     color: #6b7280;
     line-height: 1.6;
     font-size: 1.1rem;
+  }
+
+  .lesson-indicators {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
+  .indicator-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #cbd5e0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .indicator-dot:hover {
+    background-color: #a0aec0;
+    transform: scale(1.2);
+  }
+
+  .indicator-dot.active {
+    background-color: #2563eb;
+    transform: scale(1.3);
   }
 
   .video-grid {
@@ -455,11 +577,9 @@
   @keyframes fade {
     from {
       opacity: 0;
-      /* transform: translateY(10px); */
     }
     to {
       opacity: 1;
-      /* transform: translateY(0); */
     }
   }
 
@@ -469,6 +589,30 @@
     line-height: 1.25rem;
     color: rgba(107, 114, 128, 1);
     font-style: italic;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .lessons-carousel {
+      gap: 0.5rem;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .lesson-card {
+      padding: 1.5rem;
+    }
+
+    .lesson-card h3 {
+      font-size: 1.25rem;
+    }
+
+    .lesson-card p {
+      font-size: 1rem;
+    }
   }
 
 </style>
